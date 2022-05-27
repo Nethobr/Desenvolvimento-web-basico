@@ -103,3 +103,28 @@ posiNeg = () => {
         document.getElementById("resultado").innerHTML = ("O número tem como seu valor absoluto: " + val + ".");
     }   // Fim if-else
 }   // Fim posiNeg
+
+// Atividade 5
+divDoTre = () => {
+    //VAR'S
+    var num = Number(document.getElementById("num").value);
+
+    // Função que retorna o resultado
+    res = (num, param) => {
+        document.getElementById("resultado").innerHTML = ("O número " + num + " " + param + ".");
+    }   // Fim res
+
+    if ((num % 3) == 0 && (num % 2) == 0) {
+        param = "divisível por 2 e 3"
+        res(num, param);
+    } else if ((num % 2) == 0) {
+        param = "divisível por 2"
+        res(num, param);
+    } else if ((num % 3) == 0) {
+        param = "divisível por 3"
+        res(num, param);
+    } else {
+        param = "não é divisível por 2 e 3"
+        res(num, param);
+    }   // Fim if-else
+}   // Fim divDoTre
