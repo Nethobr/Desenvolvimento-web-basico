@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulários</title>
+    <script src="./_scripts/main.js"></script>
+</head>
+<body>
+    <!-- Ex 01 -->
+    <label for="nome">Primeiro nome:</label>
+    <input type="text" name="primeiro_nome" id="nome" oninput="ex_01()">
+    <p>
+        [Resultado] <span id="info"></span>
+    </p>
+
+    <!-- Ex 02 -->
+    <label for="range">Range</label>
+    <input type="range" id="range" oninput="ex_02()">
+    <p>
+        [Resultado] <span id="infoRange"></span>
+    </p>
+
+    <!-- Ex 03 -->
+    <label for="">Comentário: </label>
+    <p>
+        <textarea id="comentario" oninput="ex_03()" maxlength="150" minlength="1" width="300px"></textarea>
+    </p>
+    <p>Reatam <span id="resCom">150</span> caracteres.</p>
+</body>
+</html>
