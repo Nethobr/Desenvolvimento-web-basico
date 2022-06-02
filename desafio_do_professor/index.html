@@ -7,17 +7,19 @@
     <title>Desafio do professor - formulário</title>
     <script src="./_scripts/main.js"></script>
 </head>
-<body>
-    <main >
-        <form oninput="verificaForm()" method="">
-            <p>
-                <label for="primeiroNome">Primeiro nome:</label>
-                <input type="text" placeholder="insira o primeiro nome" id="primeiroNome" >
-            </p>
-            <p>
-                <label for="sobrenome">Segundo nome:</label>
-                <input type="text" placeholder="insira o segundo nome" id="sobrenome">
-            </p>
+<body onload="ativButton()">
+    <main>
+        <form  method="" oninput="ativButton()">
+            <div oninput="verificaForm()">
+                <p>
+                    <label for="primeiroNome">Primeiro nome:</label>
+                    <input type="text" placeholder="insira o primeiro nome" id="primeiroNome" >
+                </p>
+                <p>
+                    <label for="sobrenome">Segundo nome:</label>
+                    <input type="text" placeholder="insira o segundo nome" id="sobrenome">
+                </p>
+            </div>
             <p>
                 <label for="gen">Genêro:</label>
                 <select id="gen">
@@ -30,15 +32,17 @@
                 <input type="password" placeholder="insira a senha" id="senha">
             </p>
             <p>
-                <button id="enviar" disabled>Enviar</button>
+                <label>Confirmação:</label>
+                <input type="password" placeholder="insira a senha" id="confirmSenha" oninput="confirmacaoSenha()">
+                <p>
+                    <span id="resConfirma"></span>
+                </p>
+            </p>
+            <p>
+                <button id="enviar" onclick="exibirDados()">Enviar</button>
             </p>
         </form>
     </main>
-    <p>
-        <label>Confirmar senha: </label>
-        <input type="password" placeholder="confirme a senha" id="conSenha">
-        <button onclick="seePass()">Ver senha</button>
-    </p>
     <p id="teste"></p>
 </body>
 </html>
