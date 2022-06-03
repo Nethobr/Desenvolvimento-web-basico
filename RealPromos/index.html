@@ -25,8 +25,22 @@
             </p>
         </div>
 
+        <!-- Configuração -->
+        <div>
+            <p>
+                <label for="">Configuração:</label>
+                <textarea placeholder="Informe a configuração, caso tenha. (para pular linhas ou usar parágrafos utilize tags HTML)" id="configs"></textarea>
+            </p>
+        </div>
+
         <!-- Pagamentos e afims -->
         <div class="pagamentos">
+            <!-- Valor cheio do produto -->
+            <p>
+                <Label>Valor cheio: </Label>
+                <input type="text" id="valCheio" placeholder="Insira o valor cheio">
+            </p>
+
             <!-- Cupom -->
             <p class="cupom">
                 <label for="cupom">Cupom:</label>
@@ -40,12 +54,6 @@
                 <input placeholder="Plataforma" id="cashback" type="text"> - 
                 <input type="number" placeholder="Porcentagem do cashback." id="perCash">
             </div>
-
-            <!-- Valor cheio do produto -->
-            <p>
-                <Label>Valor cheio: </Label>
-                <input type="text" id="valCheio" placeholder="Insira o valor cheio">
-            </p>
             
             <!-- Parcelado -->
             <p class="parcelado" oninput="parcelado()">
@@ -56,7 +64,7 @@
                 </select>
 
                 <div id="pagamentoParcelado">
-                    <input type="number" placeholder="Quantidade de parcelas." id="qtdParcelas">
+                    <input type="number" placeholder="Quantidade de parcelas." id="qtdParcelas"> - <input type="text" placeholder="Ex:. Sem juros..." id="condiParcelado">
                 </div>
             </p>
         </div>
@@ -81,13 +89,14 @@
     <div>
         <span id="resCondicao"></span>
         <span id="resTitulo"></span>
-        <!-- <span id="resCupom"></span>
-        <span id="resValCheio"></span>
+        <span id="resConfigs"></span>
         <span id="resCupom"></span>
+        <span id="resValCheio"></span>
+        <span id="resCupomCacl"></span>
         <span id="resCash"></span>
-        <span id="resParcelado"></span>
+        <span id="resParcelado"></span>           
         <span id="resComentario"></span>
-        <span id="resLink"></span> -->
+        <span id="resLink"></span>
     </div>
 </body>
 </html>

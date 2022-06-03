@@ -1,17 +1,23 @@
 calcCumpom = (val, cumpom) => {
-
     var total = Number(val);
     var cup = Number (cumpom);
-
-    return (total * cup) / 100;
+    var calc = Number((total * cup) / 100);
+    return val - calc;
 }
 
-calcChashback = (valCumpom, cashBack) => {
-
+calcChashback = (valCumpom, cashBack, val) => {
     var cumpom = Number(valCumpom);
+    var total = Number(val);
     var cash = Number(cashBack);
+    var calc = Number(cumpom - ((total * cash) / 100));
+    return total - (total - calc);
+}
 
-    return (cumpom * cash) / 100;
+calcParcelado = (val, qtdParcelas) => {
+    var total = Number(val);
+    var parcelas = Number(qtdParcelas);
+
+    return total / parcelas;
 }
 
 parcelado = () => {
@@ -35,45 +41,57 @@ gerarPost = () => {
     // Var do post final
     var resCondicao = document.getElementById("resCondicao");
     var resTitulo = document.getElementById("resTitulo");
-    var resValCheio = document.getElementById("resValCheio");
+    var resConfigs = document.getElementById("resConfigs");
+
     var resCupom = document.getElementById("resCupom");
+    var resValCheio = document.getElementById("resValCheio");
+    var resCupomCacl = document.getElementById("resCupomCacl");
+    var resCash = document.getElementById("resCash");
     var resParcelado = document.getElementById("resParcelado");
+
     var resComentario = document.getElementById("resComentario");
     var resLink = document.getElementById("resLink");
 
     // Valores do input
     var condicao = document.getElementById("condicao").value;
     var titulo = document.getElementById("titulo").value;
-    // var valCheio = document.getElementById("valCheio").value.replace(".", "");
-    // var val = parseFloat(valCheio.replace(",", "."));
+    var configs = document.getElementById("configs").value;
+
     var cupom = document.getElementById("cupom").value;
-    // var perCupom = Number(document.getElementById("perCupom").value);
-    // var parcelado = Number(document.getElementById("parcelado").value);
-    // var qtdParcelas = Number(document.getElementById("qtdParcelas").value);
-    // var comentario = document.getElementById("comentario").value;
-    // var link = document.getElementById("link").value;
+    var perCupom = Number(document.getElementById("perCupom").value);
+    var cashback = document.getElementById("cashback").value;
+    var perCash = Number(document.getElementById("perCash").value);
+    var valCheio = document.getElementById("valCheio").value.replace(".", "");
+    var val = parseFloat(valCheio.replace(",", "."));
+    var parcelado = Number(document.getElementById("parcelado").value);
+    var qtdParcelas = Number(document.getElementById("qtdParcelas").value);
+    var condiParcelado = document.getElementById("condiParcelado").value;
+
+    var comentario = document.getElementById("comentario").value;
+    var link = document.getElementById("link").value;
 
     if (condicao)
         resCondicao.innerHTML = ("<p>⭐ " + condicao + " ⭐</p>");
 
     if (titulo)
         resTitulo.innerHTML = ("<p>🔥 " + titulo + " 🔥</p>");
-        // resTitulo.innerHTML = ("<p>🔥 " + titulo + " 🔥</p>");
 
+    if (configs)
+        resConfigs.innerHTML = ("<p>🔴" + configs + "🔴</p>");
+
+    var cupomVal = Number(calcCumpom(val, perCupom));
     if (cupom)
         resCupom.innerHTML = ("🎟️ CUPOM: " + cupom + " - " + perCupom + "%<br>");
-
     if (valCheio)
-        resValCheio.innerHTML = ("💸 R$ " + val + " (Valor cheio)<br>");
-        resCupom.innerHTML = ("💰 R$ " + calcCumpom(val, perCupom) + " (Com cupom)");
-        resCash.innerHTML = ("🤑 R$  " + calcChashback(calcCumpom(val, perCupom), perCash) + " (Com cupom + cashback)<br>");         
+        resValCheio.innerHTML = ("💸 R$ " + val.toFixed(2) + " (Valor cheio)<br>");
+        resCupomCacl.innerHTML = ("💰 R$ " + cupomVal.toFixed(2) + " (Com cupom) <br>");
+        resCash.innerHTML = ("🤑 R$  " + calcChashback(cupomVal, perCash, val).toFixed(2) + " (Com cupom + Cashback: "+ cashback +" "+ perCash +"%)<br>");         
     if (parcelado == 1)
-        resParcelado.innerHTML = ("😱 R$ XXXXX em " + qtdParcelas + "x "+ 'condição, ex:. sem juros.'+ "<br>");   
+        resParcelado.innerHTML = ("😱 R$ "+ calcParcelado(val, qtdParcelas).toFixed(2) +" em " + qtdParcelas + "x "+ condiParcelado + ".<br><br>");   
     
     if (comentario)
         resComentario.innerHTML = ("<p>⭐ " + comentario + " ⭐</p>");
 
     if (link)
         resLink.innerHTML = ("<p>Link: " + link + "</p>");
-
 }
