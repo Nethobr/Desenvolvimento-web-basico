@@ -9,7 +9,7 @@
 </head>
 <body onload="ativButton()">
     <main>
-        <form  method="" oninput="ativButton()">
+        <form  action="./resultado.html" method="post" oninput="ativButton()"    >
             <div oninput="verificaForm()">
                 <p>
                     <label for="primeiroNome">Primeiro nome:</label>
@@ -39,10 +39,9 @@
                 </p>
             </p>
             <p>
-                <button id="enviar" onclick="exibirDados()">Enviar</button>
+                <input type="submit" value="Enviar">
             </p>
         </form>
     </main>
-    <p id="teste"></p>
 </body>
 </html>

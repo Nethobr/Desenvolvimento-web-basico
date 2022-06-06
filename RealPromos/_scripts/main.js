@@ -20,21 +20,21 @@ calcParcelado = (val, qtdParcelas) => {
     return total / parcelas;
 }
 
-parcelado = () => {
-    var teste = Number(document.getElementById("parcelado").value);
-
-    var form = document.getElementById("pagamentoParcelado");
-
-    if (teste == 1) {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-}
-
 hoverDivs = () => {
-    var formAvista = document.getElementById("pagamentoParcelado");
-    formAvista.style.display = "none";
+    var cumpom = document.getElementById("cupomSelect").value;
+    var cashBack = document.getElementById("cashSelect").value;
+    var parcelado = document.getElementById("parcelado").value;
+
+    var resCupom = document.getElementById("resCupomSelect");
+    var resCash = document.getElementById("resCashSelect");
+    var resParcelado = document.getElementById("pagamentoParcelado");
+
+    if(cumpom == 1)
+        resCupom.style.display = "Block";
+    if(cashBack == 1)
+        resCash.style.display = "Block";
+    if(parcelado == 1)
+        resParcelado.style.display = "Block";
 }
 
 gerarPost = () => {
@@ -70,28 +70,34 @@ gerarPost = () => {
     var comentario = document.getElementById("comentario").value;
     var link = document.getElementById("link").value;
 
+    // Condição da oferta.
     if (condicao)
         resCondicao.innerHTML = ("<p>⭐ " + condicao + " ⭐</p>");
 
+    // Título do produto ou oferta.
     if (titulo)
         resTitulo.innerHTML = ("<p>🔥 " + titulo + " 🔥</p>");
 
+    // Configurações.
     if (configs)
         resConfigs.innerHTML = ("<p>🔴" + configs + "🔴</p>");
 
+    // Pagamentos e etc.
     var cupomVal = Number(calcCumpom(val, perCupom));
-    if (cupom)
-        resCupom.innerHTML = ("🎟️ CUPOM: " + cupom + " - " + perCupom + "%<br>");
     if (valCheio)
-        resValCheio.innerHTML = ("💸 R$ " + val.toFixed(2) + " (Valor cheio)<br>");
-        resCupomCacl.innerHTML = ("💰 R$ " + cupomVal.toFixed(2) + " (Com cupom) <br>");
-        resCash.innerHTML = ("🤑 R$  " + calcChashback(cupomVal, perCash, val).toFixed(2) + " (Com cupom + Cashback: "+ cashback +" "+ perCash +"%)<br>");         
+        resValCheio.innerHTML = ("💸 R$ " + val.toFixed(2) + " (Valor cheio) 💸<br>");
+        resCupomCacl.innerHTML = ("💰 R$ " + cupomVal.toFixed(2) + " (Com cupom) 💰<br>");
+        resCash.innerHTML = ("🤑 R$  " + calcChashback(cupomVal, perCash, val).toFixed(2) + " (Com cupom + Cashback: "+ cashback +" "+ perCash +"%) 🤑<br>");         
+    if (cupom)
+        resCupom.innerHTML = ("🎟️ CUPOM: " + cupom + " - " + perCupom + "% 🎟️<br>");
     if (parcelado == 1)
-        resParcelado.innerHTML = ("😱 R$ "+ calcParcelado(val, qtdParcelas).toFixed(2) +" em " + qtdParcelas + "x "+ condiParcelado + ".<br><br>");   
+        resParcelado.innerHTML = ("😱 R$ "+ calcParcelado(val, qtdParcelas).toFixed(2) +" em " + qtdParcelas + "x "+ condiParcelado + ". 😱<br><br>");   
     
+    // Comentário da oferta.
     if (comentario)
         resComentario.innerHTML = ("<p>⭐ " + comentario + " ⭐</p>");
 
+    // Link da oferta.
     if (link)
-        resLink.innerHTML = ("<p>Link: " + link + "</p>");
+        resLink.innerHTML = ("<p>🔗 Link: " + link + " 🔗</p>");
 }

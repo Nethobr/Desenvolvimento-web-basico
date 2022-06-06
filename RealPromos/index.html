@@ -7,7 +7,7 @@
     <title>Real Promos</title>
     <script src="./_scripts/main.js"></script>
 </head>
-<body onload="hoverDivs()">
+<body>
     <div oninput="gerarPost()">
         <!-- Condição do POST -->
         <div class="condiPost">
@@ -42,31 +42,52 @@
             </p>
 
             <!-- Cupom -->
-            <p class="cupom">
-                <label for="cupom">Cupom:</label>
-                <input placeholder="Cupom" id="cupom" type="text"> - 
-                <input type="number" placeholder="Porcentagem do cupom" id="perCupom">
-            </p>
+                <p class="cupom">
+                    <label for="cupom">Cupom?</label>
+                    <select id="cupomSelect" oninput="hoverDivs()">
+                        <option value="1">SIM</option>
+                        <option value="0" selected>NÃO</option>
+                    </select>
 
-            <!-- CashBack -->
-            <div id="pagamentoAvista">
-                <label for="cashback">Cashback:</label>
-                <input placeholder="Plataforma" id="cashback" type="text"> - 
-                <input type="number" placeholder="Porcentagem do cashback." id="perCash">
-            </div>
-            
-            <!-- Parcelado -->
-            <p class="parcelado" oninput="parcelado()">
-                <label for="parcelado">Parcelado?</label>
-                <select id="parcelado">
-                    <option value="1">SIM</option>
-                    <option value="0" selected>NÃO</option>
-                </select>
+                    <div id="resCupomSelect" style="display: none;">
+                        <input placeholder="Cupom" id="cupom" type="text"> - 
+                        <input type="number" placeholder="valor" id="perCupom"> - 
+                        <select>
+                            <option>Dinheiro</option>
+                            <option>Porcentagem</option>
+                        </select>
+                    </div>
+                </p>
 
-                <div id="pagamentoParcelado">
-                    <input type="number" placeholder="Quantidade de parcelas." id="qtdParcelas"> - <input type="text" placeholder="Ex:. Sem juros..." id="condiParcelado">
+                <!-- CashBack -->
+                <div id="pagamentoAvista">
+                    <label for="cashback">Cashback?</label>
+
+                    <select id="cashSelect" oninput="hoverDivs()">
+                        <option value="1">SIM</option>
+                        <option value="0" selected>NÃO</option>
+                    </select>
+
+                    <div id="resCashSelect" style="display: none;">
+                        <p>
+                        <input placeholder="Plataforma" id="cashback" type="text"> - 
+                        <input type="number" placeholder="Porcentagem do cashback." id="perCash">
+                        </p>
+                    </div>
                 </div>
-            </p>
+                
+                <!-- Parcelado -->
+                <p class="parcelado" oninput="hoverDivs()">
+                    <label for="parcelado">Parcelado?</label>
+                    <select id="parcelado">
+                        <option value="1">SIM</option>
+                        <option value="0" selected>NÃO</option>
+                    </select>
+
+                    <div id="pagamentoParcelado" style="display: none;">
+                        <input type="number" placeholder="Quantidade de parcelas." id="qtdParcelas"> - <input type="text" placeholder="Ex:. Sem juros..." id="condiParcelado">
+                    </div>
+                </p>
         </div>
 
         <!-- Comentário ou dicas de como chegar -->

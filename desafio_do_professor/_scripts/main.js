@@ -1,11 +1,3 @@
-verificaForm = () => {
-    // Var's
-    var nome = document.getElementById("primeiroNome").value;
-    var sobrenome = document.getElementById("sobrenome").value;
-
-    document.getElementById("teste").innerText = nome;
-}   // formVefic
-
 confirmacaoSenha = () => {
     // Var's
     var conSenha = 1;
@@ -21,29 +13,23 @@ confirmacaoSenha = () => {
     show = (resp) => { return document.getElementById("resConfirma").innerHTML = resp; }
     
     // Condições
-    if (senha == conSenha) 
-    {
+    if (senha == conSenha) {
         resp = "Senhas iguais, prossiga!";
         show(resp);
 
         return 1;
-    }
-    else if (conSenha == 1 && senha == (conSenha * 3))
-    {
+    } else if (conSenha == 1 && senha == (conSenha * 3)) {
+        resp = "Para prosseguir, insira a senha identica a anterior!";
+        show(resp);
+
+        return 0;
+    } else if (conSenha == "" || conSenha == null) {
         resp = "Para prosseguir, insira a senha identica a anterior!";
         show(resp);
 
         return 0;
     }
-    else if (conSenha == "" || conSenha == null)
-    {
-        resp = "Para prosseguir, insira a senha identica a anterior!";
-        show(resp);
-
-        return 0;
-    }
-    else 
-    {
+    else {
         resp = "Senhas não são iguais, verifique se amabas então corretas!";
         show(resp);
 
@@ -74,12 +60,9 @@ ativButton = () => {
     if (conSenhaVal)
         conSenha = conSenhaVal;
 
-    if (nome == 0 || subNome == 0 || genero == 0 || confirmacaoSenha() == 0)
-    {
+    if (nome == 0 || subNome == 0 || genero == 0 || confirmacaoSenha() == 0) {
         document.getElementById("enviar").disabled = true;
-    }
-    else
-    {
+    } else {
         document.getElementById("enviar").disabled = false;
     }   // Fim if-else
 }   // Fim ativButton
@@ -103,4 +86,4 @@ exibirDados = () => {
     "Nome completo: " + nomeVal + " " + sobrenomeVal + "." +
     "Genêro: " + generoVal + "." +
     "Senha: " + conSenhaVal;
-}
+}   // Fim exibirDados
