@@ -76,8 +76,8 @@
         <label for="">Tarefa:</label>
         <input type="texte" name="tarefa" id="tarefa"/>
         <button onclick="ex_07()">Clique-me</button>
-
         <ul id="listaTarefas"></ul>
+        <button onclick="ex_07_limpar()">Limpar</button>
     </p>
     <hr/>
 
@@ -165,6 +165,12 @@
             var elemento_pai = document.getElementById("listaTarefas");
             elemento_pai.appendChild(elemento);
         }   // Fim ex_07
+        ex_07_limpar = () => {
+            var lista = document.getElementById("listaTarefas");
+            var itens = document.getElementById("testeLi");
+
+            lista.replaceChildren(itens);
+        }
 
         ex_08 = () => {
             document.getElementById("mudaCss").style.backgroundColor = "gray";
