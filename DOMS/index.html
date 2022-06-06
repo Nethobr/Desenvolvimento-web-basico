@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <!-- Ex1 -->
+    <p id="info">
+        Um parágrado simples.
+    </p>
+    <button onclick="ex_01()">Clique-me</button>
+
+    <hr/>
+
+    <!-- Ex2 -->
+    <p>Estado civíl:</p>
+
+    <label for="solteiro">Solteirão dos cria</label>
+    <input type="radio" name="estado_civil" id="solteiro" value="1"/>
+
+    <label for="casado">Casadão dos cria</label>
+    <input type="radio" name="estado_civil" id="casado" value="2"/>
+
+    <label for="divorciado">Divorciado dos cria</label>
+    <input type="radio" name="estado_civil" id="divorciado" value="3"/>
+
+    <button onclick="ex_02()">Clique-me</button>
+    <hr/>
+
+    <!-- Ex3 -->
+    <p>Primeiro parágrafo.</p>
+    <p>Segundo parágrafo.</p>
+    <p>Terceiro parágrafo.</p>
+
+    <button onclick="ex_03()">Clique-me</button>
+    <hr/>
+
+    <!-- Ex4 -->
+    <style>
+        .destaque {
+            color: yellowgreen;
+        }
+    </style>
+    <p class="normal">Primeiro parágrafo.</p>
+    <p class="normal">Segundo parágrafo.</p>
+    <p class="destaque">Terceiro parágrafo.</p>
+
+    <button onclick="ex_04()">Clique-me</button>
+    <hr/>
+
+    <!-- Ex5 -->
+    <p>Estado civíl:</p>
+
+    <label for="solteiro">Solteirão dos cria</label>
+    <input type="radio" name="estado_civil" id="solteiro" value="1"/>
+
+    <label for="casado">Casadão dos cria</label>
+    <input type="radio" name="estado_civil" id="casado" value="2"/>
+
+    <label for="divorciado">Divorciado dos cria</label>
+    <input type="radio" name="estado_civil" id="divorciado" value="3"/>
+
+    <button onclick="ex_05()">Clique-me</button>
+    <hr/>
+
+    <!-- Ex6 -->
+    <p id="dinamicTitle"></p>
+    <button onclick="ex_06()">Clique-me</button>
+    <hr/>
+
+    <!-- Ex7 -->
+    <p>
+        <label for="">Tarefa:</label>
+        <input type="texte" name="tarefa" id="tarefa"/>
+        <button onclick="ex_07()">Clique-me</button>
+
+        <ul id="listaTarefas"></ul>
+    </p>
+    <hr/>
+
+    <!-- Ex8 -->
+    <p id="">
+        <ul id="mudaCss">
+            <li>Fazer compras.</li>
+            <li>Limpar casa.</li>
+            <li>Netiflix</li>
+        </ul>
+    </p>
+    <button onclick="ex_08()">Clique-me</button>
+    <hr/>
+
+    <script>
+        ex_01 = () => {
+            var elemento = document.getElementById("info");
+
+            window.alert(elemento.innerHTML += "<i> Teste</i>.");
+        }   // Fim ex_01
+
+        ex_02 = () => {
+            var nodes = document.getElementsByName("estado_civil");
+
+            for (var i = 0; i < nodes.length; i++) 
+            {
+                window.alert(nodes[i].value);
+            }   // Fim for
+        }   // Fim ex_02
+
+        ex_03 = () => {
+            var nodes = document.getElementsByTagName("p");
+
+            for (var i = 0; i < nodes.length; i++) 
+            {
+                window.alert(nodes[i].innerText);
+            }   // Fim for
+        }   // Fim ex_03
+
+        ex_04 = () => {
+            var nodes = document.getElementsByClassName("normal");
+
+            for (var i = 0; i < nodes.length; i++) 
+            {
+                window.alert(nodes[i].innerText);
+            }   // Fim for
+        }   // Fim ex_04
+
+        ex_05 = () => {
+            var nodes = document.getElementsByName("estado_civil");
+
+            for (var i = 0; i < nodes.length; i++) 
+            {
+                if (nodes[i].checked) 
+                {
+                    window.alert(nodes[i].id);
+                }   // Fim if
+            }   // Fim for
+        }   // Fim ex_05
+
+        var count = 0;
+        ex_06 = () => {
+            var elemento_pai = document.getElementById("dinamicTitle");
+            var elemento = document.createElement("h1");
+            var texto = document.createTextNode("Um texo dahora.");
+
+            // Limitando
+            if (count == 0) {
+                // Aqui falamos com o appendChild, que ele vai receber a variável texto.
+                elemento.appendChild(texto);
+                elemento_pai.appendChild(elemento);
+                count ++;
+            } else {
+                elemento_pai.innerHTML = ("Limite alcançado.");
+            }   // Fim if-else
+        }   // Fim ex_06
+
+        ex_07 = () => {
+            var elemento = document.createElement("li");
+            elemento.id = "testeLi";
+
+            var texto = document.createTextNode(document.getElementById("tarefa").value);
+            elemento.appendChild(texto);
+
+            var elemento_pai = document.getElementById("listaTarefas");
+            elemento_pai.appendChild(elemento);
+        }   // Fim ex_07
+
+        ex_08 = () => {
+            document.getElementById("mudaCss").style.backgroundColor = "gray";
+        }   // Fim ex_08
+    </script>
+</body>
+</html>

@@ -57,6 +57,7 @@ gerarPost = () => {
     var titulo = document.getElementById("titulo").value;
     var configs = document.getElementById("configs").value;
 
+    var selctCupom = document.getElementById("cupomSelect").value;
     var cupom = document.getElementById("cupom").value;
     var perCupom = Number(document.getElementById("perCupom").value);
     var cashback = document.getElementById("cashback").value;
@@ -86,10 +87,19 @@ gerarPost = () => {
     var cupomVal = Number(calcCumpom(val, perCupom));
     if (valCheio)
         resValCheio.innerHTML = ("💸 R$ " + val.toFixed(2) + " (Valor cheio) 💸<br>");
-        resCupomCacl.innerHTML = ("💰 R$ " + cupomVal.toFixed(2) + " (Com cupom) 💰<br>");
-        resCash.innerHTML = ("🤑 R$  " + calcChashback(cupomVal, perCash, val).toFixed(2) + " (Com cupom + Cashback: "+ cashback +" "+ perCash +"%) 🤑<br>");         
+        // resCash.innerHTML = ("🤑 R$  " + calcChashback(cupomVal, perCash, val).toFixed(2) + " (Com cupom + Cashback: "+ cashback +" "+ perCash +"%) 🤑<br>");         
+
     if (cupom)
         resCupom.innerHTML = ("🎟️ CUPOM: " + cupom + " - " + perCupom + "% 🎟️<br>");
+    if (selctCupom == 1) {
+        resCupomCacl.innerHTML = ("💰 R$ " + cupomVal.toFixed(2) + " (Com cupom) 💰<br>");
+        selctCupom = 2;
+    } else if (selctCupom == 0) {
+        resCupom.style.display = "none";
+        resCupomCacl.style.display = "none";
+        selctCupom = 2;
+    }
+
     if (parcelado == 1)
         resParcelado.innerHTML = ("😱 R$ "+ calcParcelado(val, qtdParcelas).toFixed(2) +" em " + qtdParcelas + "x "+ condiParcelado + ". 😱<br><br>");   
     
@@ -100,4 +110,4 @@ gerarPost = () => {
     // Link da oferta.
     if (link)
         resLink.innerHTML = ("<p>🔗 Link: " + link + " 🔗</p>");
-}
+};
