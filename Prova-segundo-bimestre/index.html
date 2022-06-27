@@ -10,16 +10,16 @@
     <!-- CSS -->
     <style>
         *{
-            margin: 25px;
+            margin: 10px 15px 10px 15px;
             font-family: Arial, Helvetica, sans-serif;
         }
 
         img{
             display: block;
-            margin: 0px auto 0px auto;
+            margin: 20px auto 20px auto;
         }
         .topo{
-            width: 150vh;
+            width: 180vh;
         }
         h1, h2, h3{
             color: rgb(59, 104, 186);
@@ -49,7 +49,7 @@
         }
         hr{
             border: none;
-            height: 1.5px;
+            height: 2px;
             background: gray;
             width: 50%;
             display: block;
@@ -59,11 +59,43 @@
             color: white;
             text-align: center;
         }
+        .bold{
+            font-weight: bold;
+            margin: 0px;
+        }
     </style>
 
     <!-- Js -->
     <script>
 
+        let count = Number(0);
+        let status = true;
+
+        quebra = () => {
+            status = false;
+            document.getElementById("lampada").src = "./_imgs/lampada_quebrada.jpeg";
+        }   // Fim click
+
+        over = () => {
+            if (status == true) {
+                // img.src = "./_imgs/lampada_ligada.jpeg";
+                document.getElementById("lampada").src = "./_imgs/lampada_ligada.jpeg";
+                count ++;
+                document.getElementById("countClick").innerText = count;
+            }
+        }   // Fim over
+
+        leave = () => {
+            if (status == true)
+                document.getElementById("lampada").src = "./_imgs/lampada_desligada.jpeg";
+        }   // Fim leave
+
+        reset = () => {
+            count = Number(0);
+            status = true;
+            document.getElementById("lampada").src = "./_imgs/lampada_desligada.jpeg";
+            document.getElementById("countClick").innerText = count;
+        }   // Fim reset
     </script>
 </head>
 <body>
@@ -72,7 +104,7 @@
 
     <h1>5 formas de economizar energia elétrica dentro de casa</h1>
 
-    <p>Cada vez mais, as pessoas estão buscando formas de economizar energia elétrica. Conforme levantamento, o Brasil está entre as nações com a energia mais cara. Além damotivação financeira, há, ainda, a que envolve a sustentabilidade. pesquisas demonstramque o brasileiro ocupa o terceiro lugar no ranking de povos com maior consciência epreocupação com a sustentabilidade. A humanidade está passando por constantes criseshídricas e energéticas, então é importante que tenha pessoas pensando no meio ambienteao mesmo tempo em que garantem economia de energia elétrica.</p>
+    <p>Cada vez mais, as pessoas estão buscando <span class="bold">de economizar energia elétrica.</span> Conforme levantamento, o Brasil está entre as nações com a energia mais cara. Além damotivação financeira, há, ainda, a que envolve a sustentabilidade. pesquisas demonstramque o brasileiro ocupa o terceiro lugar no ranking de povos com maior consciência epreocupação com a sustentabilidade. A humanidade está passando por constantes criseshídricas e energéticas, então é importante que tenha pessoas pensando no meio ambienteao mesmo tempo em que garantem economia de energia elétrica.</p>
 
     <p>É o seu caso? Então confira nossas dicas a seguir!</p>
 
@@ -94,8 +126,8 @@
     <h3>2. Troque suas lâmpadas</h3>
 
     <p>Na hora de pensar em formas de economizar energia elétrica é preciso levar em conta a troca das lâmpadas de sua
-        residência. Isso porque esse tipo de iluminação é responsável por cerca de 20% do consumo total de energia de
-        uma casa. Por isso, é importante optar pelos modelos que demandem menor consumo.</p>
+        residência. Isso porque esse tipo de iluminação é responsável por cerca de <span class="bold">20% do consumo total de energia de
+        uma casa.</span> Por isso, é importante optar pelos modelos que demandem menor consumo.</p>
 
     <p>As lâmpadas incandescentes estão entre os modelos que devem ser trocados, visto serem os que mais consomem
         energia. Já as lâmpadas de LED tem melhor custo x benefício, já que são 80% mais econômicas do que as
@@ -107,8 +139,8 @@
         realmente reduzir o consumo de energia elétrica. Entre os equipamentos que mais geram esse tipo de custo estão
         televisores e fornos microondas.</p>
 
-    <p>Se você tem dúvidas sobre a efetividade dessa ação, saiba que, não é novidade que aparelhos ligados consomem
-        demais. Faça um teste. Sabia que somente um decodificador de TV a cabo que é utilizado por poucas horas no dia,
+    <p>Se você tem dúvidas sobre a efetividade dessa ação, saiba que, não é novidade que <span class="bold">aparelhos ligados consomem
+        demais.</span> Faça um teste. Sabia que somente um decodificador de TV a cabo que é utilizado por poucas horas no dia,
         mas fica o restante do tempo na tomada, pode gerar um custo adicional de quase cem reais anualmente?</p>
 
     <h3>4. Tenha atenção ao estado dos eletrodomésticos</h3>
@@ -134,10 +166,10 @@
 
     <h3 class="warning">Se não economizarmos, pode faltar energia!</h3>
 
-    <img src="./_imgs/lampada_desligada.jpeg" alt="Lâmpada">
+    <img onclick="quebra()" onmouseover="over()" onmouseleave="leave()" src="./_imgs/lampada_desligada.jpeg" id="lampada" alt="Lâmpada">
 
-    <p style="text-align: center;">Total de acendimentos: 0</p>
-
+    <p style="text-align: center;" id="acende">Total de acendimentos: <span id="countClick" style="margin: 0px;">0</span>.</p>
+    <p><button onclick="reset()" style="display: block; margin: auto;">Reiniciar</button></p>
     <p>Fonte: <a href="https://www.rioverde.com.br/empreendimentos-imobiliarios/formas-de-economizar-energia/">Rio Verde
             Empreendimentos</a></p>
 
@@ -146,5 +178,4 @@
     </footer>
 
 </body>
-
 </html>
