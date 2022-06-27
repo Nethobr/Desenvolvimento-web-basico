@@ -41,7 +41,18 @@
             padding: 25px;
             background-color: rgb(59, 104, 186);
         }
-
+        button{
+            color: aliceblue;
+            width: 200px;
+            padding: 10px;
+            border: none;
+            background-color: rgb(59, 104, 186);
+            transition: 0.5s;
+        } button:hover {
+            background-color: rgb(39, 69, 124);
+            width: 205px;
+            transition: 0.5s;
+        }
         /* Únicos */
         .warning{
             color: crimson;
@@ -73,13 +84,14 @@
 
         quebra = () => {
             status = false;
-            document.getElementById("lampada").src = "./_imgs/lampada_quebrada.jpeg";
+            document.getElementById("lampada").src = "./lampada_quebrada.jpeg";
         }   // Fim click
 
         over = () => {
             if (status == true) {
                 // img.src = "./_imgs/lampada_ligada.jpeg";
-                document.getElementById("lampada").src = "./_imgs/lampada_ligada.jpeg";
+                document.getElementById("lampada").src = "./lampada_ligada.jpeg";
+                document.getElementById("block").innerText = ""; 
                 count ++;
                 document.getElementById("countClick").innerText = count;
             }
@@ -87,20 +99,27 @@
 
         leave = () => {
             if (status == true)
-                document.getElementById("lampada").src = "./_imgs/lampada_desligada.jpeg";
+                document.getElementById("lampada").src = "./lampada_desligada.jpeg";
+            
+                document.getElementById("block").innerText = ""; 
         }   // Fim leave
 
         reset = () => {
-            count = Number(0);
-            status = true;
-            document.getElementById("lampada").src = "./_imgs/lampada_desligada.jpeg";
-            document.getElementById("countClick").innerText = count;
+            if (status == true) 
+                document.getElementById("block").innerText = "Não tem necessidade"; 
+            else {
+                count = Number(0);
+                status = true;
+                document.getElementById("lampada").src = "./lampada_desligada.jpeg";
+                document.getElementById("countClick").innerText = count;    
+            }
+
         }   // Fim reset
     </script>
 </head>
 <body>
     
-    <img src="./_imgs/topo.jpeg" class="topo" alt="Imagem principal">
+    <img src="./topo.jpeg" class="topo" alt="Imagem principal">
 
     <h1>5 formas de economizar energia elétrica dentro de casa</h1>
 
@@ -166,10 +185,13 @@
 
     <h3 class="warning">Se não economizarmos, pode faltar energia!</h3>
 
-    <img onclick="quebra()" onmouseover="over()" onmouseleave="leave()" src="./_imgs/lampada_desligada.jpeg" id="lampada" alt="Lâmpada">
+    <p style="text-align: center;"><span id="block" style="color: rgb(255, 0, 0); background-color: rgba(255, 0, 0, 0.199);"></span></p>
+
+    <img onclick="quebra()" onmouseover="over()" onmouseleave="leave()" src="./lampada_desligada.jpeg" id="lampada" alt="Lâmpada">
 
     <p style="text-align: center;" id="acende">Total de acendimentos: <span id="countClick" style="margin: 0px;">0</span>.</p>
-    <p><button onclick="reset()" style="display: block; margin: auto;">Reiniciar</button></p>
+    
+    <p><button onclick="reset()" style="display: block; margin: auto;">Reiniciar</button> </p>
     <p>Fonte: <a href="https://www.rioverde.com.br/empreendimentos-imobiliarios/formas-de-economizar-energia/">Rio Verde
             Empreendimentos</a></p>
 
